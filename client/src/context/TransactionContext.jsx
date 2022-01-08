@@ -75,7 +75,7 @@ export const TransactionsProvider = ({ children }) => {
         try {
             if (ethereum) {
                 const transactionsContract = createEthereumContract();
-                const currentTransactionCount = await transactionsContract.getTransactionCount();
+                const currentTransactionCount = transactionCount;
 
                 window.localStorage.setItem("transactionCount", currentTransactionCount);
             }
@@ -125,9 +125,9 @@ export const TransactionsProvider = ({ children }) => {
                 console.log(`Success - ${transactionHash.hash}`);
                 setIsLoading(false);
 
-                const transactionsCount = await transactionsContract.getTransactionCount();
+                const transactionsCount = transactionCount;
 
-                setTransactionCount(transactionsCount.toNumber());
+                setTransactionCount(transactionsCount);
             } else {
                 console.log("No ethereum object");
             }
@@ -159,4 +159,4 @@ export const TransactionsProvider = ({ children }) => {
             {children}
         </TransactionContext.Provider>
     );
-};
+}; 
