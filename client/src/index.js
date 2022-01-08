@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./index.css"
+import {TransactionsProvider }from './context/TransactionContext'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <TransactionsProvider>
+    <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </TransactionsProvider>,
   document.getElementById('root')
 );
 
